@@ -24,9 +24,15 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
+    // Check if API key is configured
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY not configured');
+      return res.status(500).json({ error: 'Email service not configured' });
+    }
+
     // Format the investment interest email
     const emailHtml = `
-      <h2>New Investment Interest - Zephyr Fund</h2>
+      <h2>New Investment Interest - Zypher Capital</h2>
 
       <table style="border-collapse: collapse; width: 100%; max-width: 600px;">
         <tr>
@@ -55,13 +61,14 @@ export default async function handler(req, res) {
 
       <p style="margin-top: 20px; color: #666; font-size: 12px;">
         Submitted at: ${new Date().toISOString()}<br>
-        This is an automated message from the Zephyr Fund landing page.
+        This is an automated message from the Zypher Capital landing page.
       </p>
     `;
 
     // Send email notification
+    // Note: With Resend sandbox (onboarding@resend.dev), you can only send to your verified email
     const { data, error } = await resend.emails.send({
-      from: 'Zephyr Fund <onboarding@resend.dev>',
+      from: 'Zypher Capital <onboarding@resend.dev>',
       to: [process.env.NOTIFICATION_EMAIL || 'tim@rfrsh.io'],
       subject: `New Investment Interest: ${firstName} ${lastName} (${investmentSize})`,
       html: emailHtml,
@@ -69,8 +76,11 @@ export default async function handler(req, res) {
     });
 
     if (error) {
-      console.error('Resend error:', error);
-      return res.status(500).json({ error: 'Failed to send notification' });
+      console.error('Resend error:', JSON.stringify(error));
+      return res.status(500).json({
+        error: 'Failed to send notification',
+        details: error.message || 'Unknown error'
+      });
     }
 
     return res.status(200).json({
@@ -80,7 +90,10 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    console.error('Server error:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+    console.error('Server error:', error.message, error.stack);
+    return res.status(500).json({
+      error: 'Internal server error',
+      details: error.message
+    });
   }
 }
