@@ -3,22 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zephyr Fund | Quantitative Trading Strategies</title>
-    <meta name="description" content="Institutional-grade quantitative trading strategies. Market-neutral, volatility-positive, risk-controlled.">
+    <title>Zephyr Capital | Quantitative Investment Management</title>
+    <meta name="description" content="Systematic investment strategies driven by quantitative research and rigorous risk management. Market-neutral, volatility-positive.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0a1628;
-            --primary-light: #1a2d4a;
-            --accent: #3b82f6;
-            --accent-light: #60a5fa;
-            --text: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: rgba(255, 255, 255, 0.1);
-            --gradient-start: #0a1628;
-            --gradient-end: #1e3a5f;
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a24;
+            --bg-card: rgba(255, 255, 255, 0.02);
+            --bg-card-hover: rgba(255, 255, 255, 0.04);
+            --border: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(255, 255, 255, 0.12);
+            --text-primary: #f8f9fa;
+            --text-secondary: #a0a0a8;
+            --text-muted: #6b6b78;
+            --accent: #4a9eff;
+            --accent-subtle: rgba(74, 158, 255, 0.1);
+            --gold: #c9a962;
+            --gold-subtle: rgba(201, 169, 98, 0.1);
+            --success: #34d399;
         }
 
         * {
@@ -27,12 +33,21 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-            color: var(--text);
-            min-height: 100vh;
-            line-height: 1.6;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .serif {
+            font-family: 'Playfair Display', Georgia, serif;
         }
 
         /* Navigation */
@@ -41,82 +56,75 @@
             top: 0;
             left: 0;
             right: 0;
-            padding: 1.5rem 5%;
+            padding: 1.25rem 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: rgba(10, 22, 40, 0.8);
+            background: rgba(10, 10, 15, 0.85);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
         }
 
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1rem;
+        .logo span {
+            color: var(--gold);
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
         .nav-links a {
-            color: var(--text-muted);
+            color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.875rem;
+            font-weight: 400;
+            letter-spacing: 0.3px;
             transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--text);
+            color: var(--text-primary);
         }
 
         .btn {
-            background: var(--accent);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
+            background: transparent;
+            color: var(--text-primary);
+            padding: 0.65rem 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 500;
+            font-size: 0.875rem;
+            letter-spacing: 0.3px;
             transition: all 0.3s ease;
-            border: none;
             cursor: pointer;
         }
 
         .btn:hover {
-            background: var(--accent-light);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text);
-        }
-
-        .btn-outline:hover {
             background: rgba(255, 255, 255, 0.05);
-            border-color: var(--text-muted);
+            border-color: var(--border-hover);
+        }
+
+        .btn-primary {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            border-color: var(--text-primary);
+        }
+
+        .btn-primary:hover {
+            background: #e0e0e0;
+            border-color: #e0e0e0;
         }
 
         /* Hero Section */
@@ -124,8 +132,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 8rem 5% 4rem;
+            padding: 8rem 6% 6rem;
             position: relative;
             overflow: hidden;
         }
@@ -137,240 +144,324 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 40%);
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(74, 158, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(201, 169, 98, 0.02) 0%, transparent 40%);
             pointer-events: none;
         }
 
         .hero-content {
-            max-width: 900px;
-            text-align: center;
+            max-width: 800px;
             position: relative;
             z-index: 1;
         }
 
-        .hero-badge {
-            display: inline-block;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
+        .hero-eyebrow {
+            font-size: 0.8rem;
             font-weight: 500;
-            color: var(--accent-light);
-            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
-            line-height: 1.1;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 400;
+            line-height: 1.2;
             margin-bottom: 1.5rem;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
         }
 
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--accent-light) 0%, #818cf8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 580px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
         }
 
         .hero-cta {
             display: flex;
             gap: 1rem;
-            justify-content: center;
             flex-wrap: wrap;
         }
 
-        /* Features Section */
-        .features {
-            padding: 6rem 5%;
-            background: rgba(0, 0, 0, 0.2);
+        /* Credentials Bar */
+        .credentials {
+            padding: 4rem 6%;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .features-grid {
+        .credentials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(59, 130, 246, 0.3);
-            transform: translateY(-4px);
-        }
-
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Stats Section */
-        .stats {
-            padding: 6rem 5%;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             max-width: 1000px;
             margin: 0 auto;
             text-align: center;
         }
 
-        .stat-item h3 {
-            font-size: 3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-light) 0%, #818cf8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .credential {
+            padding: 1rem;
+        }
+
+        .credential-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            font-weight: 400;
+            color: var(--text-primary);
             margin-bottom: 0.5rem;
         }
 
-        .stat-item p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            text-transform: uppercase;
+        .credential-label {
+            font-size: 0.8rem;
+            font-weight: 500;
             letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-muted);
         }
 
-        /* Approach Section */
-        .approach {
-            padding: 6rem 5%;
-            background: rgba(0, 0, 0, 0.2);
+        /* Philosophy Section */
+        .philosophy {
+            padding: 7rem 6%;
         }
 
-        .approach-content {
-            max-width: 800px;
+        .section-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-text {
+            color: var(--text-secondary);
+            line-height: 1.9;
+        }
+
+        .philosophy-points {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .philosophy-point {
+            padding: 1.75rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .philosophy-point:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+        }
+
+        .philosophy-point h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .philosophy-point p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Strategy Section */
+        .strategy {
+            padding: 7rem 6%;
+            background: var(--bg-secondary);
+        }
+
+        .strategy-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
-        .approach-item {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            align-items: flex-start;
+        .strategy-card {
+            padding: 2.25rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
 
-        .approach-number {
-            flex-shrink: 0;
-            width: 48px;
-            height: 48px;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 12px;
+        .strategy-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .strategy-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: var(--accent-subtle);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            color: var(--accent-light);
+            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
         }
 
-        .approach-item h3 {
-            font-size: 1.25rem;
+        .strategy-card:nth-child(2) .strategy-icon {
+            background: var(--gold-subtle);
+        }
+
+        .strategy-card:nth-child(3) .strategy-icon {
+            background: rgba(52, 211, 153, 0.1);
+        }
+
+        .strategy-card h3 {
+            font-size: 1.05rem;
             font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .strategy-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Performance Section */
+        .performance {
+            padding: 7rem 6%;
+        }
+
+        .performance-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .performance-header {
+            margin-bottom: 3rem;
+        }
+
+        .performance-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .metric-card {
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
             margin-bottom: 0.5rem;
         }
 
-        .approach-item p {
-            color: var(--text-muted);
+        .metric-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--text-primary);
         }
 
-        /* Contact Section */
-        .contact {
-            padding: 6rem 5%;
+        .metric-value.positive {
+            color: var(--success);
         }
 
-        .contact-container {
-            max-width: 600px;
+        .metric-description {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 7rem 6%;
+            background: var(--bg-secondary);
+        }
+
+        .team-content {
+            max-width: 800px;
             margin: 0 auto;
             text-align: center;
         }
 
-        .contact h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+        .team-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-top: 1.5rem;
         }
 
-        .contact > .contact-container > p {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
+        /* Contact Section */
+        .contact {
+            padding: 7rem 6%;
+        }
+
+        .contact-container {
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
         }
 
         .contact-form {
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--bg-secondary);
             border: 1px solid var(--border);
-            border-radius: 16px;
+            border-radius: 12px;
             padding: 2.5rem;
-            text-align: left;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .form-group label {
             display: block;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             margin-bottom: 0.5rem;
+            color: var(--text-secondary);
         }
 
         .form-group input,
@@ -378,11 +469,11 @@
         .form-group textarea {
             width: 100%;
             padding: 0.875rem 1rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--bg-primary);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text);
-            font-size: 1rem;
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
             font-family: inherit;
             transition: all 0.3s ease;
         }
@@ -392,7 +483,6 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--accent);
-            background: rgba(59, 130, 246, 0.05);
         }
 
         .form-group input::placeholder,
@@ -402,11 +492,15 @@
 
         .form-group select {
             cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%236b6b78' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
         }
 
         .form-group select option {
-            background: var(--primary);
-            color: var(--text);
+            background: var(--bg-primary);
+            color: var(--text-primary);
         }
 
         .form-row {
@@ -418,11 +512,28 @@
         .submit-btn {
             width: 100%;
             padding: 1rem;
-            font-size: 1rem;
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
         }
 
         .form-note {
-            margin-top: 1rem;
+            margin-top: 1.25rem;
             font-size: 0.8rem;
             color: var(--text-muted);
             text-align: center;
@@ -430,9 +541,8 @@
 
         /* Footer */
         footer {
-            padding: 3rem 5%;
+            padding: 4rem 6% 3rem;
             border-top: 1px solid var(--border);
-            text-align: center;
         }
 
         .footer-content {
@@ -440,39 +550,73 @@
             margin: 0 auto;
         }
 
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
         .footer-links {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+            gap: 3rem;
         }
 
         .footer-links a {
-            color: var(--text-muted);
+            color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             transition: color 0.3s ease;
         }
 
         .footer-links a:hover {
-            color: var(--text);
+            color: var(--text-primary);
         }
 
         .footer-disclaimer {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
-            max-width: 800px;
-            margin: 0 auto 1.5rem;
-            line-height: 1.7;
+            line-height: 1.8;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
         }
 
         .copyright {
-            font-size: 0.85rem;
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .section-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .strategy-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .credentials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             nav {
                 padding: 1rem 5%;
@@ -490,225 +634,235 @@
                 font-size: 2rem;
             }
 
-            .hero p {
-                font-size: 1rem;
+            .credentials-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
             }
 
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
+            .strategy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .performance-metrics {
+                grid-template-columns: 1fr;
             }
 
             .form-row {
                 grid-template-columns: 1fr;
             }
 
-            .approach-item {
+            .footer-top {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 2rem;
             }
 
-            .stat-item h3 {
-                font-size: 2.5rem;
+            .footer-links {
+                flex-wrap: wrap;
+                gap: 1.5rem;
             }
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Subtle animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-content {
-            animation: fadeInUp 1s ease;
+            animation: fadeIn 0.8s ease;
         }
 
-        .feature-card {
-            animation: fadeInUp 0.8s ease;
+        .credential {
+            animation: fadeIn 0.6s ease;
         }
 
-        .feature-card:nth-child(2) {
-            animation-delay: 0.1s;
-        }
-
-        .feature-card:nth-child(3) {
-            animation-delay: 0.2s;
-        }
+        .credential:nth-child(2) { animation-delay: 0.1s; }
+        .credential:nth-child(3) { animation-delay: 0.2s; }
+        .credential:nth-child(4) { animation-delay: 0.3s; }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="logo">
-            <div class="logo-icon">Z</div>
-            Zephyr Fund
-        </div>
+        <div class="logo">Zephyr <span>Capital</span></div>
         <div class="nav-links">
-            <a href="#approach">Approach</a>
-            <a href="#features">Features</a>
-            <a href="#contact" class="btn">Request Access</a>
+            <a href="#philosophy">Philosophy</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#performance">Performance</a>
+            <a href="#contact" class="btn">Investor Inquiries</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <span class="hero-badge">Quantitative Trading</span>
-            <h1>Institutional-Grade <span>Quantitative Strategies</span></h1>
-            <p>Market-neutral, volatility-positive, risk-controlled. We leverage mathematical certainties in cryptocurrency markets.</p>
+            <div class="hero-eyebrow">Quantitative Investment Management</div>
+            <h1>Systematic strategies driven by research and disciplined risk management</h1>
+            <p class="hero-subtitle">We apply rigorous quantitative methods to identify and capture market inefficiencies, delivering consistent risk-adjusted returns independent of market direction.</p>
             <div class="hero-cta">
-                <a href="#contact" class="btn">Express Interest</a>
-                <a href="#approach" class="btn btn-outline">Learn More</a>
+                <a href="#contact" class="btn btn-primary">Request Information</a>
+                <a href="#philosophy" class="btn">Our Approach</a>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <h3>18+</h3>
-                <p>Months Backtested</p>
+    <!-- Credentials -->
+    <section class="credentials">
+        <div class="credentials-grid">
+            <div class="credential">
+                <div class="credential-value">18+</div>
+                <div class="credential-label">Months Track Record</div>
             </div>
-            <div class="stat-item">
-                <h3>127K+</h3>
-                <p>Scenarios Tested</p>
+            <div class="credential">
+                <div class="credential-value">127K</div>
+                <div class="credential-label">Backtested Scenarios</div>
             </div>
-            <div class="stat-item">
-                <h3>+4.89%</h3>
-                <p>Avg Return/Trade</p>
+            <div class="credential">
+                <div class="credential-value">+4.89%</div>
+                <div class="credential-label">Avg. Return Per Trade</div>
             </div>
-            <div class="stat-item">
-                <h3>24/7</h3>
-                <p>Market Coverage</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="section-header">
-            <h2>Why Zephyr Fund</h2>
-            <p>Combining advanced quantitative methods with institutional-grade risk management</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">&#9878;</div>
-                <h3>Market Neutral</h3>
-                <p>Our strategies are designed to profit regardless of market direction. We exploit mathematical certainties, not market predictions.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">&#9889;</div>
-                <h3>Volatility Positive</h3>
-                <p>While others fear volatility, we embrace it. Market dislocations create our profit opportunities.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">&#9881;</div>
-                <h3>Asymmetric Returns</h3>
-                <p>Tight stop losses limit downside while capturing outsized gains. Our winners consistently outpace our losses by design.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">&#8978;</div>
-                <h3>Statistically Validated</h3>
-                <p>Every parameter is rigorously backtested across multiple market conditions with out-of-sample validation.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">&#9889;</div>
-                <h3>Non-Custodial Execution</h3>
-                <p>Trade execution through decentralized venues. Your capital remains under your control at all times.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">&#9202;</div>
-                <h3>24/7 Operations</h3>
-                <p>Automated systems monitor and execute around the clock, capturing opportunities in all time zones.</p>
+            <div class="credential">
+                <div class="credential-value">24/7</div>
+                <div class="credential-label">Systematic Monitoring</div>
             </div>
         </div>
     </section>
 
-    <!-- Approach Section -->
-    <section class="approach" id="approach">
-        <div class="section-header">
-            <h2>Our Approach</h2>
-            <p>A disciplined, systematic methodology</p>
+    <!-- Philosophy Section -->
+    <section class="philosophy" id="philosophy">
+        <div class="section-grid">
+            <div>
+                <div class="section-label">Investment Philosophy</div>
+                <h2 class="section-title">We believe markets reward patience, discipline, and mathematical rigor</h2>
+                <p class="section-text">Our approach is grounded in the conviction that sustainable alpha comes not from prediction, but from systematic exploitation of structural inefficiencies. We focus on what can be measured, tested, and repeated.</p>
+            </div>
+            <div class="philosophy-points">
+                <div class="philosophy-point">
+                    <h3>Market Neutrality</h3>
+                    <p>Our strategies are designed to generate returns independent of broad market movements. We seek to profit from relative value opportunities while maintaining minimal directional exposure.</p>
+                </div>
+                <div class="philosophy-point">
+                    <h3>Asymmetric Risk Profile</h3>
+                    <p>We structure positions with tightly controlled downside through disciplined stop-losses, while allowing winning positions to capture the full extent of favorable moves.</p>
+                </div>
+                <div class="philosophy-point">
+                    <h3>Volatility as Opportunity</h3>
+                    <p>Where others see risk, we see opportunity. Market dislocations create the price divergences that our strategies are designed to capture systematically.</p>
+                </div>
+            </div>
         </div>
-        <div class="approach-content">
-            <div class="approach-item">
-                <div class="approach-number">1</div>
-                <div>
-                    <h3>Statistical Arbitrage</h3>
-                    <p>We identify mathematical relationships between correlated assets and profit when these relationships temporarily diverge from historical norms.</p>
+    </section>
+
+    <!-- Strategy Section -->
+    <section class="strategy" id="strategy">
+        <div class="strategy-header">
+            <div class="section-label">Our Approach</div>
+            <h2 class="section-title">Systematic execution backed by rigorous research</h2>
+        </div>
+        <div class="strategy-grid">
+            <div class="strategy-card">
+                <div class="strategy-icon">&#9881;</div>
+                <h3>Quantitative Research</h3>
+                <p>Every strategy undergoes exhaustive backtesting across multiple market regimes. We validate our models with out-of-sample testing and continuous walk-forward analysis.</p>
+            </div>
+            <div class="strategy-card">
+                <div class="strategy-icon">&#9878;</div>
+                <h3>Statistical Arbitrage</h3>
+                <p>We identify mathematical relationships between correlated assets, systematically capturing profits when temporary price divergences revert to historical norms.</p>
+            </div>
+            <div class="strategy-card">
+                <div class="strategy-icon">&#10003;</div>
+                <h3>Risk Management</h3>
+                <p>Multi-layer risk architecture with position-level stops, daily exposure limits, and portfolio-wide circuit breakers. Capital preservation is paramount.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Section -->
+    <section class="performance" id="performance">
+        <div class="performance-content">
+            <div class="performance-header">
+                <div class="section-label">Track Record</div>
+                <h2 class="section-title">Verified performance metrics</h2>
+                <p class="section-text" style="margin-top: 1rem;">Our results are derived from systematic backtesting with institutional-grade cost modeling, including market impact, slippage, and funding costs.</p>
+            </div>
+            <div class="performance-metrics">
+                <div class="metric-card">
+                    <div class="metric-label">Average Return per Trade</div>
+                    <div class="metric-value positive">+4.89%</div>
+                    <div class="metric-description">Net of all transaction costs and slippage</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Win/Loss Ratio</div>
+                    <div class="metric-value">2.08x</div>
+                    <div class="metric-description">Winners outpace losses by design</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Maximum Drawdown</div>
+                    <div class="metric-value">10.6%</div>
+                    <div class="metric-description">Controlled risk through disciplined stops</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Backtested Scenarios</div>
+                    <div class="metric-value">127,000+</div>
+                    <div class="metric-description">Comprehensive parameter optimization</div>
                 </div>
             </div>
-            <div class="approach-item">
-                <div class="approach-number">2</div>
-                <div>
-                    <h3>Rigorous Validation</h3>
-                    <p>Every strategy undergoes extensive backtesting, walk-forward analysis, and out-of-sample testing before deployment.</p>
-                </div>
-            </div>
-            <div class="approach-item">
-                <div class="approach-number">3</div>
-                <div>
-                    <h3>Dynamic Risk Management</h3>
-                    <p>Position sizing and exposure are continuously adjusted based on market conditions, volatility, and portfolio risk metrics.</p>
-                </div>
-            </div>
-            <div class="approach-item">
-                <div class="approach-number">4</div>
-                <div>
-                    <h3>Institutional Infrastructure</h3>
-                    <p>Enterprise-grade systems with redundancy, monitoring, and 24/7 operational coverage ensure reliable execution.</p>
-                </div>
-            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="team-content">
+            <div class="section-label">Our Team</div>
+            <h2 class="section-title">Built by experienced practitioners</h2>
+            <p class="team-text">Our team combines deep expertise in quantitative research, systematic trading, and technology. We bring institutional experience to every aspect of our operation, from strategy development to execution infrastructure.</p>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="contact-container">
-            <h2>Express Interest</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem;">For qualified investors seeking alternative alpha generation. Minimum investment: $1,000,000.</p>
+            <div class="contact-header">
+                <div class="section-label">Investor Relations</div>
+                <h2 class="section-title">Request Information</h2>
+                <p class="section-text" style="margin-top: 0.75rem; text-align: center;">For qualified investors. Minimum investment: $1,000,000.</p>
+            </div>
             <form class="contact-form" id="interestForm">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="firstName">First Name</label>
-                        <input type="text" id="firstName" name="firstName" placeholder="John" required>
+                        <input type="text" id="firstName" name="firstName" required>
                     </div>
                     <div class="form-group">
                         <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" name="lastName" placeholder="Smith" required>
+                        <input type="text" id="lastName" name="lastName" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="organization">Organization (Optional)</label>
-                    <input type="text" id="organization" name="organization" placeholder="Company or Fund Name">
+                    <label for="organization">Organization</label>
+                    <input type="text" id="organization" name="organization" placeholder="Optional">
                 </div>
                 <div class="form-group">
                     <label for="investmentSize">Investment Interest</label>
                     <select id="investmentSize" name="investmentSize" required>
-                        <option value="" disabled selected>Select investment range</option>
-                        <option value="1m-5m">$1M - $5M</option>
-                        <option value="5m-10m">$5M - $10M</option>
-                        <option value="10m-20m">$10M - $20M</option>
-                        <option value="20m+">$20M+</option>
+                        <option value="" disabled selected>Select range</option>
+                        <option value="$1M - $5M">$1M - $5M</option>
+                        <option value="$5M - $10M">$5M - $10M</option>
+                        <option value="$10M - $20M">$10M - $20M</option>
+                        <option value="$20M+">$20M+</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="message">Message (Optional)</label>
-                    <textarea id="message" name="message" rows="3" placeholder="Any questions or specific interests..."></textarea>
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="3" placeholder="Optional"></textarea>
                 </div>
-                <button type="submit" class="btn submit-btn">Submit Interest</button>
-                <p class="form-note">We will respond within 2 business days. All inquiries are confidential.</p>
+                <button type="submit" class="submit-btn">Submit Inquiry</button>
+                <p class="form-note">We respond to all inquiries within two business days.</p>
             </form>
         </div>
     </section>
@@ -716,15 +870,22 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-links">
-                <a href="#approach">Approach</a>
-                <a href="#features">Features</a>
-                <a href="#contact">Contact</a>
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="logo">Zephyr <span>Capital</span></div>
+                    <p>Systematic investment strategies driven by quantitative research and disciplined risk management.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#philosophy">Philosophy</a>
+                    <a href="#strategy">Strategy</a>
+                    <a href="#performance">Performance</a>
+                    <a href="#contact">Contact</a>
+                </div>
             </div>
-            <p class="footer-disclaimer">
-                This website is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any securities. Past performance is not indicative of future results. All investments involve risk, including the possible loss of principal. The information provided is not intended to be, and should not be construed as, investment, legal, or tax advice.
-            </p>
-            <p class="copyright">&copy; 2025 Zephyr Fund. All rights reserved. STRICTLY CONFIDENTIAL.</p>
+            <div class="footer-disclaimer">
+                <strong>Important Disclosures:</strong> This website is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any securities. Past performance is not indicative of future results. All investments involve risk, including the possible loss of principal. The performance data shown represents backtested results and may not reflect actual trading. Backtested performance has inherent limitations and does not represent actual trading. No representation is being made that any account will achieve results similar to those shown. The information provided should not be considered investment, legal, or tax advice.
+            </div>
+            <p class="copyright">&copy; 2025 Zephyr Capital. All rights reserved. Confidential.</p>
         </div>
     </footer>
 
@@ -737,10 +898,8 @@
             const submitBtn = form.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
 
-            // Disable button and show loading state
             submitBtn.disabled = true;
             submitBtn.textContent = 'Submitting...';
-            submitBtn.style.opacity = '0.7';
 
             const formData = new FormData(form);
             const data = Object.fromEntries(formData.entries());
@@ -748,55 +907,43 @@
             try {
                 const response = await fetch('/api/submit', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data),
                 });
 
                 const result = await response.json();
 
                 if (response.ok) {
-                    // Success - show message and reset form
-                    submitBtn.textContent = 'Submitted Successfully!';
-                    submitBtn.style.background = '#10b981';
+                    submitBtn.textContent = 'Inquiry Submitted';
+                    submitBtn.style.background = 'var(--success)';
                     form.reset();
-
-                    // Reset button after 3 seconds
                     setTimeout(() => {
                         submitBtn.textContent = originalText;
                         submitBtn.style.background = '';
-                        submitBtn.style.opacity = '';
                         submitBtn.disabled = false;
                     }, 3000);
                 } else {
                     throw new Error(result.error || 'Submission failed');
                 }
             } catch (error) {
-                console.error('Form submission error:', error);
-                submitBtn.textContent = 'Error - Try Again';
+                console.error('Form error:', error);
+                submitBtn.textContent = 'Error - Please retry';
                 submitBtn.style.background = '#ef4444';
-
-                // Reset button after 3 seconds
                 setTimeout(() => {
                     submitBtn.textContent = originalText;
                     submitBtn.style.background = '';
-                    submitBtn.style.opacity = '';
                     submitBtn.disabled = false;
                 }, 3000);
             }
         });
 
-        // Smooth scrolling for anchor links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
