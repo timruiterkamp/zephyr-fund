@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zephyr Capital | Quantitative Investment Management</title>
+    <title>Zypher Capital | Quantitative Investment Management</title>
     <meta name="description" content="Systematic investment strategies driven by quantitative research and rigorous risk management. Market-neutral, volatility-positive.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -154,6 +154,40 @@
             max-width: 800px;
             position: relative;
             z-index: 1;
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 55%;
+            height: 80%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .hero-visual canvas {
+            width: 100%;
+            height: 100%;
+            opacity: 0.6;
+        }
+
+        .visual-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--bg-primary) 0%, transparent 30%, transparent 100%);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-visual {
+                width: 100%;
+                opacity: 0.3;
+            }
         }
 
         .hero-eyebrow {
@@ -684,7 +718,7 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="logo">Zephyr <span>Capital</span></div>
+        <div class="logo">Zypher <span>Capital</span></div>
         <div class="nav-links">
             <a href="#philosophy">Philosophy</a>
             <a href="#strategy">Strategy</a>
@@ -695,6 +729,11 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <!-- Animated visual -->
+        <div class="hero-visual">
+            <canvas id="heroCanvas"></canvas>
+            <div class="visual-overlay"></div>
+        </div>
         <div class="hero-content">
             <div class="hero-eyebrow">Quantitative Investment Management</div>
             <h1>Systematic strategies driven by research and disciplined risk management</h1>
@@ -793,9 +832,9 @@
                     <div class="metric-description">Net of all transaction costs and slippage</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-label">Win/Loss Ratio</div>
-                    <div class="metric-value">2.08x</div>
-                    <div class="metric-description">Winners outpace losses by design</div>
+                    <div class="metric-label">Sharpe Ratio</div>
+                    <div class="metric-value">2.4</div>
+                    <div class="metric-description">Risk-adjusted performance benchmark</div>
                 </div>
                 <div class="metric-card">
                     <div class="metric-label">Maximum Drawdown</div>
@@ -872,7 +911,7 @@
         <div class="footer-content">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <div class="logo">Zephyr <span>Capital</span></div>
+                    <div class="logo">Zypher <span>Capital</span></div>
                     <p>Systematic investment strategies driven by quantitative research and disciplined risk management.</p>
                 </div>
                 <div class="footer-links">
@@ -885,7 +924,7 @@
             <div class="footer-disclaimer">
                 <strong>Important Disclosures:</strong> This website is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any securities. Past performance is not indicative of future results. All investments involve risk, including the possible loss of principal. The performance data shown represents backtested results and may not reflect actual trading. Backtested performance has inherent limitations and does not represent actual trading. No representation is being made that any account will achieve results similar to those shown. The information provided should not be considered investment, legal, or tax advice.
             </div>
-            <p class="copyright">&copy; 2025 Zephyr Capital. All rights reserved. Confidential.</p>
+            <p class="copyright">&copy; 2025 Zypher Capital. All rights reserved. Confidential.</p>
         </div>
     </footer>
 
@@ -947,6 +986,143 @@
                 }
             });
         });
+
+        // Hero Canvas Animation - Flowing grid with data points
+        (function() {
+            const canvas = document.getElementById('heroCanvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            let width, height;
+            let particles = [];
+            let lines = [];
+            let animationId;
+
+            function resize() {
+                const container = canvas.parentElement;
+                width = container.offsetWidth;
+                height = container.offsetHeight;
+                canvas.width = width * 2;
+                canvas.height = height * 2;
+                ctx.scale(2, 2);
+                initParticles();
+                initLines();
+            }
+
+            function initParticles() {
+                particles = [];
+                const count = Math.floor((width * height) / 15000);
+                for (let i = 0; i < count; i++) {
+                    particles.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        radius: Math.random() * 2 + 1,
+                        vx: (Math.random() - 0.5) * 0.3,
+                        vy: (Math.random() - 0.5) * 0.3,
+                        alpha: Math.random() * 0.5 + 0.2,
+                        color: Math.random() > 0.7 ? '#c9a962' : '#4a9eff'
+                    });
+                }
+            }
+
+            function initLines() {
+                lines = [];
+                const lineCount = 8;
+                for (let i = 0; i < lineCount; i++) {
+                    const points = [];
+                    const y = (height / lineCount) * i + height / lineCount / 2;
+                    for (let x = 0; x <= width; x += 30) {
+                        points.push({
+                            x: x,
+                            baseY: y,
+                            y: y,
+                            offset: Math.random() * Math.PI * 2
+                        });
+                    }
+                    lines.push({
+                        points: points,
+                        alpha: 0.1 + Math.random() * 0.1,
+                        speed: 0.01 + Math.random() * 0.01
+                    });
+                }
+            }
+
+            let time = 0;
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                time += 0.016;
+
+                // Draw flowing lines
+                lines.forEach(line => {
+                    ctx.beginPath();
+                    ctx.strokeStyle = `rgba(74, 158, 255, ${line.alpha})`;
+                    ctx.lineWidth = 1;
+
+                    line.points.forEach((point, i) => {
+                        point.y = point.baseY + Math.sin(time * line.speed * 60 + point.offset + point.x * 0.01) * 20;
+                        if (i === 0) {
+                            ctx.moveTo(point.x, point.y);
+                        } else {
+                            ctx.lineTo(point.x, point.y);
+                        }
+                    });
+                    ctx.stroke();
+                });
+
+                // Draw and update particles
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0) p.x = width;
+                    if (p.x > width) p.x = 0;
+                    if (p.y < 0) p.y = height;
+                    if (p.y > height) p.y = 0;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color.replace(')', `, ${p.alpha})`).replace('rgb', 'rgba').replace('#c9a962', 'rgba(201, 169, 98').replace('#4a9eff', 'rgba(74, 158, 255');
+                    if (p.color === '#c9a962') {
+                        ctx.fillStyle = `rgba(201, 169, 98, ${p.alpha})`;
+                    } else {
+                        ctx.fillStyle = `rgba(74, 158, 255, ${p.alpha})`;
+                    }
+                    ctx.fill();
+                });
+
+                // Draw connections between nearby particles
+                particles.forEach((p1, i) => {
+                    particles.slice(i + 1).forEach(p2 => {
+                        const dx = p1.x - p2.x;
+                        const dy = p1.y - p2.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 100) {
+                            ctx.beginPath();
+                            ctx.moveTo(p1.x, p1.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.strokeStyle = `rgba(74, 158, 255, ${0.1 * (1 - dist / 100)})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    });
+                });
+
+                animationId = requestAnimationFrame(animate);
+            }
+
+            resize();
+            window.addEventListener('resize', resize);
+            animate();
+
+            // Pause when not visible
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    cancelAnimationFrame(animationId);
+                } else {
+                    animate();
+                }
+            });
+        })();
     </script>
 </body>
 </html>
