@@ -1,9 +1,7 @@
 {
-  "rewrites": [
-    { "source": "/robots.txt", "destination": "/robots.txt" },
-    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
-    { "source": "/llms.txt", "destination": "/llms.txt" }
-  ],
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "framework": null,
   "headers": [
     {
       "source": "/public/(.*)",
