@@ -1,0 +1,11 @@
+# Zypher Capital - Robots.txt
+# https://zypher.fund
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://zypher.fund/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

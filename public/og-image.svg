@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4af37"/>
+      <stop offset="50%" style="stop-color:#c9a962"/>
+      <stop offset="100%" style="stop-color:#b8860b"/>
+    </linearGradient>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="100%" style="stop-color:#12121a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg-grad)"/>
+  <text x="600" y="280" font-family="Georgia, serif" font-size="72" font-weight="500" fill="#f8f9fa" text-anchor="middle">Zypher</text>
+  <text x="600" y="280" font-family="Georgia, serif" font-size="72" font-weight="500" fill="url(#gold)" text-anchor="middle" dx="185">Capital</text>
+  <text x="600" y="360" font-family="system-ui, sans-serif" font-size="28" fill="#a0a0a8" text-anchor="middle">Quantitative Investment Management</text>
+  <line x1="400" y1="410" x2="800" y2="410" stroke="#c9a962" stroke-width="1" opacity="0.5"/>
+  <text x="600" y="470" font-family="system-ui, sans-serif" font-size="22" fill="#6b6b78" text-anchor="middle">Systematic Strategies | Risk Management | Market Neutral</text>
+</svg>
