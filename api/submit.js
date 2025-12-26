@@ -66,9 +66,8 @@ export default async function handler(req, res) {
     `;
 
     // Send email notification
-    // Note: With Resend sandbox (onboarding@resend.dev), you can only send to your verified email
     const { data, error } = await resend.emails.send({
-      from: 'Zypher Capital <onboarding@resend.dev>',
+      from: 'Zypher Capital <noreply@zypher.fund>',
       to: [process.env.NOTIFICATION_EMAIL || 'tim@rfrsh.io'],
       subject: `New Investment Interest: ${firstName} ${lastName} (${investmentSize})`,
       html: emailHtml,
